@@ -3,3 +3,4 @@
 /Lib
 /backend/mysite/settings.py
 pyvenv.cfg
+/node_modules
