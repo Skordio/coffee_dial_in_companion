@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@auth0/auth0-vue': ^2.0.0
   '@rushstack/eslint-patch': ^1.1.4
   '@types/jsdom': ^20.0.1
   '@types/node': ^18.11.12
@@ -28,6 +29,7 @@ specifiers:
   vue-tsc: ^1.0.12
 
 dependencies:
+  '@auth0/auth0-vue': 2.0.0_vue-router@4.1.6
   auth0-js: 9.20.1
   axios: 1.2.6
   eventemitter3: 5.0.0
@@ -57,6 +59,23 @@ devDependencies:
   vue-tsc: 1.0.24_typescript@4.7.4
 
 packages:
+
+  /@auth0/auth0-spa-js/2.0.2:
+    resolution: {integrity: sha512-sxK9Lb6gXGImqjmWBfndA/OSNY4YLPTPwJEVuitXIOZ1p3EoqHM4zjIHvcdiYIaVo+cUfEf3l0bf8UA7Xi4tjg==}
+    dev: false
+
+  /@auth0/auth0-vue/2.0.0_vue-router@4.1.6:
+    resolution: {integrity: sha512-10NiYQjfUM0hRDrUeUa6RmXEkwU2+f1gTqlwMJ8kbzdcAeuLHz3J8+jfAdN5/PIUAIqOv6nKT1v3FDF31vmh7A==}
+    peerDependencies:
+      vue-router: ^4.0.12
+    peerDependenciesMeta:
+      vue-router:
+        optional: true
+    dependencies:
+      '@auth0/auth0-spa-js': 2.0.2
+      vue: 3.2.45
+      vue-router: 4.1.6_vue@3.2.45
+    dev: false
 
   /@babel/helper-string-parser/7.19.4:
     resolution: {integrity: sha512-nHtDoQcuqFmwYNYPz3Rah5ph2p8PFeFCsZk9A/48dPc/rGocJ5J3hAAZ7pb76VWX3fZKu+uEr/FhH5jLx7umrw==}
@@ -944,7 +963,7 @@ packages:
   /axios/0.27.2_debug@4.3.4:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.4
+      follow-redirects: 1.15.2
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -953,7 +972,7 @@ packages:
   /axios/1.2.6:
     resolution: {integrity: sha512-rC/7F08XxZwjMV4iuWv+JpD3E0Ksqg9nac4IIg6RwNuF0JTeWoCo/mBNG54+tNhhI11G3/VDRbdDQTs9hGp4pQ==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.4
+      follow-redirects: 1.15.2
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -1894,7 +1913,7 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /follow-redirects/1.15.2_debug@4.3.4:
+  /follow-redirects/1.15.2:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -1902,8 +1921,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dependencies:
-      debug: 4.3.4
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}

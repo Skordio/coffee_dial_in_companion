@@ -55,16 +55,17 @@ import AuthService from './auth/AuthService'
 import axios from 'axios'
 
 
+const API_URL = 'http://localhost:8000'
+const auth = new AuthService()
+
 export default defineComponent({
         components: {
         },
         props: {
         },
         setup(props) {
-			const API_URL = 'http://localhost:8000'
-			const auth = new AuthService()
-			const authenticated = ref(false)
 			const message = ref('')
+			const authenticated = ref(false);
 
 			let login = () => 					{auth.login()}
 			let handleAuthentication = () => 	{auth.handleAuthentication()}
@@ -79,7 +80,7 @@ export default defineComponent({
 			}
 
 			auth.authNotifier.on('authChange', authState => {
-				authenticated.valueOf = authState.authenticated
+				authenticated.value = authState.authenticated
 			})
             return {
 				authenticated,

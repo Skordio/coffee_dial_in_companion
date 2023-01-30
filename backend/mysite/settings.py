@@ -30,7 +30,11 @@ SECRET_KEY = 'django-insecure-w8ni5@8b_t+vpb^nbsuvx!$uue$bh+l+0wxu=j%atfsmw#&1py
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost:5173',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -177,6 +181,8 @@ JWT_AUTH = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000/',
-    'http://localhost:5173/',
+    'http://localhost:8000',
+    'http://localhost:5173',
+    #'localhost:8000',
+    #'localhost:5173',
 )
