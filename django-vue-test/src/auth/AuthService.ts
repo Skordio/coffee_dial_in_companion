@@ -20,7 +20,7 @@ export default class AuthService {
   auth0 = new auth0.WebAuth({
     domain: 'dev-0rhw0i4lr3uasosb.us.auth0.com',
     clientID: 'NhHd68XyPUcvORzEGsAWCVXwDEjOtkRf',
-    redirectUri: 'http://localhost:5173/',
+    redirectUri: 'http://localhost:8000/',
     audience: 'https://my.django-vue-test-api',
     responseType: 'token id_token',
     scope: 'openid profile'

@@ -66,3 +66,7 @@ pnpm test:e2e
 ```sh
 pnpm lint
 ```
+
+
+
+get info at https://auth0.com/blog/building-modern-applications-with-django-and-vuejs/
