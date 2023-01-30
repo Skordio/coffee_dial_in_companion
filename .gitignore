@@ -1,0 +1,5 @@
+/Scripts
+/Include
+/Lib
+/backend/mysite/settings.py
+pyvenv.cfg
