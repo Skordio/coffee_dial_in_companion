@@ -1,6 +1,7 @@
+//@ts-nocheck
 import auth0 from 'auth0-js'
 import EventEmitter from 'eventemitter3'
-import router from './../router'
+import router from '../router'
 
 export default class AuthService {
   authenticated = this.isAuthenticated()
@@ -19,7 +20,7 @@ export default class AuthService {
   auth0 = new auth0.WebAuth({
     domain: 'dev-0rhw0i4lr3uasosb.us.auth0.com',
     clientID: 'NhHd68XyPUcvORzEGsAWCVXwDEjOtkRf',
-    redirectUri: 'http://localhost/polls',
+    redirectUri: 'http://localhost:8000/',
     responseType: 'token id_token',
     scope: 'openid profile'
   })
