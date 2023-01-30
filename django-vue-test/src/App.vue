@@ -74,12 +74,12 @@ export default defineComponent({
 				const url = `${API_URL}/api/private/`
 				return axios.get(url, {headers: {Authorization: `Bearer ${auth.getAuthToken()}`}}).then((response) => {
 					console.log(response.data)
-					message.value = response.data || ''
+					message.valueOf = response.data || ''
 				})
 			}
 
 			auth.authNotifier.on('authChange', authState => {
-				authenticated.value = authState.authenticated
+				authenticated.valueOf = authState.authenticated
 			})
             return {
 				authenticated,
