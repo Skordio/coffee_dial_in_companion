@@ -4,5 +4,6 @@
 /backend/mysite/settings.py
 pyvenv.cfg
 /node_modules
-backend/mysite/__pycache__/
-backend/polls/__pycache__/
+/backend/mysite/__pycache__/
+/backend/polls/__pycache__/
+/database stuff/
