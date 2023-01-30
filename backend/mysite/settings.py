@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sakila',
-        'USER': 'root',
-        'PASSWORD': 'Decade-Tarmac-Fraction-Trickery8-Civil',
-        'HOST': '127.0.0.1',
+        'USER': 'steven',
+        'PASSWORD': 'prance-twitter-bouncy-unaligned',
+        'HOST': '141.126.229.237',
         'PORT': '3306',
     }
 }
