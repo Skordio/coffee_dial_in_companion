@@ -30,6 +30,9 @@ class Address(models.Model):
     location = models.TextField()  # This field type is a guess.
     last_update = models.DateTimeField()
 
+    # type: ignore
+    def __str__(self):
+        return "" + str(self.address) + " " + str(self.city) + str(self.postal_code) + " " + str(self.phone)
     class Meta:
         managed = False
         db_table = 'address'
@@ -119,6 +122,9 @@ class City(models.Model):
     city = models.CharField(max_length=50)
     country = models.ForeignKey('Country', models.DO_NOTHING)
     last_update = models.DateTimeField()
+
+    def __str__(self):
+        return str(self.city)
 
     class Meta:
         managed = False
@@ -311,6 +317,8 @@ class Staff(models.Model):
     password = models.CharField(max_length=40, db_collation='utf8mb4_bin', blank=True, null=True)
     last_update = models.DateTimeField()
 
+    def __str__(self):
+        return str(self.first_name) + str(self.last_name) + ", who works at " + str(self.store)
     class Meta:
         managed = False
         db_table = 'staff'
@@ -322,6 +330,9 @@ class Store(models.Model):
     address = models.ForeignKey(Address, models.DO_NOTHING)
     last_update = models.DateTimeField()
 
+    # type: ignore
+    def __str__(self):
+        return str(self.address)
     class Meta:
         managed = False
         db_table = 'store'
