@@ -7,3 +7,4 @@ pyvenv.cfg
 /backend/mysite/__pycache__/
 /backend/polls/__pycache__/
 /database stuff/
+backend/polls/migrations/__pycache__

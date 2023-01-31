@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
+
 def public(request):
     return HttpResponse("Not authenticated")
 

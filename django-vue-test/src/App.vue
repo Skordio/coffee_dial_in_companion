@@ -21,7 +21,7 @@
 
 	<RouterView /> -->
 
-	<div>
+	<div class="login-buttons-container">
 		<button
 			class="btn btn-primary btn-margin"
 			v-if="!authenticated"
@@ -31,14 +31,14 @@
 
 		<button
 			class="btn btn-primary btn-margin"
-			v-if="authenticated"
+			
 			@click="privateMessage()">
 			Call Private
 		</button>
 
 		<button
 			class="btn btn-primary btn-margin"
-			v-if="authenticated"
+			
 			@click="logout()">
 			Log Out
 		</button>
@@ -100,4 +100,9 @@ export default defineComponent({
 
 <style>
 @import './assets/homestyle.css';
+
+	.login-buttons-container {
+		display: flex;
+		flex-flow: row nowrap;
+	}
 </style>

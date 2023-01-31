@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import json
 from pathlib import Path
 from django.utils import timezone
-from six.moves.urllib import request
+import urllib.request
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
 
@@ -92,9 +92,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sakila',
-        'USER': 'steven',
-        'PASSWORD': 'prance-twitter-bouncy-unaligned',
-        'HOST': '141.126.229.237',
+        'USER': 'root',
+        'PASSWORD': 'Decade-Tarmac-Fraction-Trickery8-Civil',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
@@ -159,12 +159,13 @@ PUBLIC_KEY = None
 JWT_ISSUER = None
 
 if AUTH0_DOMAIN:
-    jsonurl = request.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
-    jwks = json.loads(jsonurl.read().decode('utf-8'))
-    cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
-    certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
-    PUBLIC_KEY = certificate.public_key()
-    JWT_ISSUER = 'https://' + AUTH0_DOMAIN + '/'
+    #jsonurl = request.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
+    with urllib.request.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json') as jsonurl:
+        jwks = json.loads(jsonurl.read().decode('utf-8'))
+        cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
+        certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
+        PUBLIC_KEY = certificate.public_key()
+        JWT_ISSUER = 'https://' + AUTH0_DOMAIN + '/'
 
 
 def jwt_get_username_from_payload_handler(payload):

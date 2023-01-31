@@ -25,6 +25,7 @@ from . import views
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('', views.public),  
     path('api/public', views.public),  
     path('api/private', views.private), 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
