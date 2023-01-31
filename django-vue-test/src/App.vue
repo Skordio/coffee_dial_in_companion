@@ -21,29 +21,36 @@
 
 	<RouterView /> -->
 
-	<div class="login-buttons-container">
-		<button
-			class="btn btn-primary btn-margin"
-			v-if="!authenticated"
-			@click="login()">
-			Log In
-		</button>
+	<div class="flex-container-vert">
+		<div>
+			<p v-if="isAuthenticated" style="font-size: xx-large;"> YOU ARE LOGGED IN NICE</p>
+		</div>
+		<div style="height: 10em">
+		</div>
+		<div class="flex-container">
+			<button
+				class="big-button-style"
+				v-if="!isAuthenticated"
+				@click="login()">
+				Log In
+			</button>
 
-		<button
-			class="btn btn-primary btn-margin"
-			
-			@click="privateMessage()">
-			Call Private
-		</button>
-
-		<button
-			class="btn btn-primary btn-margin"
-			
-			@click="logout()">
-			Log Out
-		</button>
-		{{message}}
-		<br>
+			<!-- <button
+				class="btn btn-primary btn-margin"
+				
+				@click="privateMessage()">
+				Call Private
+			</button> -->
+<!-- class="btn btn-primary btn-margin" -->
+			<button
+				class="big-button-style"
+				v-if="isAuthenticated"
+				@click="logout()">
+				Log Out
+			</button>
+			{{message}}
+			<br>
+		</div>
 	</div>
 </template>
 
@@ -51,12 +58,13 @@
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
     import { ref, defineComponent } from 'vue'
-import AuthService from './auth/AuthService'
+// import AuthService from './auth/AuthService'
 import axios from 'axios'
+import { useAuth0 } from '@auth0/auth0-vue';
 
 
-const API_URL = 'http://localhost:8000'
-const auth = new AuthService()
+// const API_URL = 'http://localhost:8000'
+// const auth = new AuthService()
 
 export default defineComponent({
         components: {
@@ -64,32 +72,43 @@ export default defineComponent({
         props: {
         },
         setup(props) {
+      		const auth0 = useAuth0();
 			const message = ref('')
-			const authenticated = ref(false);
 
-			let login = () => 					{auth.login()}
-			let handleAuthentication = () => 	{auth.handleAuthentication()}
-			let logout = () => 					{auth.logout()}
+			// let login = () => 					{auth.login()}
+			// let handleAuthentication = () => 	{auth.handleAuthentication()}
+			// let logout = () => 					{auth.logout()}
 
-			let privateMessage = () => {
-				const url = `${API_URL}/api/private/`
-				return axios.get(url, {headers: {Authorization: `Bearer ${auth.getAuthToken()}`}}).then((response) => {
-					console.log(response.data)
-					message.valueOf = response.data || ''
-				})
+			let login = () => {
+				auth0.loginWithRedirect();
 			}
 
-			auth.authNotifier.on('authChange', authState => {
-				authenticated.value = authState.authenticated
-			})
+			let logout = () => {
+				auth0.logout({ 
+					logoutParams: { 
+						returnTo: window.location.origin
+					}
+				});
+			}
+			// let privateMessage = () => {
+			// 	const url = `${API_URL}/api/private/`
+			// 	return axios.get(url, {headers: {Authorization: `Bearer ${auth.getAuthToken()}`}}).then((response) => {
+			// 		console.log(response.data)
+			// 		message.valueOf = response.data || ''
+			// 	})
+			// }
+
+			// auth.authNotifier.on('authChange', authState => {
+			// 	authenticated.value = authState.authenticated
+			// })
+
             return {
-				authenticated,
+				user: auth0.user,
+				isAuthenticated: auth0.isAuthenticated,
+				isLoading: auth0.isLoading,
 				message,
 				login,
 				logout,
-				handleAuthentication,
-				privateMessage
-
             }
         }
 })
@@ -101,8 +120,21 @@ export default defineComponent({
 <style>
 @import './assets/homestyle.css';
 
-	.login-buttons-container {
+	.flex-container {
 		display: flex;
 		flex-flow: row nowrap;
+		justify-content: center;
+		align-content: center;
+	}
+	.flex-container-vert {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-self: center;
+		align-self: center;
+		align-content: center;
+		justify-content: center;
+	}
+	.big-button-style {
+		font-size: xx-large;
 	}
 </style>
