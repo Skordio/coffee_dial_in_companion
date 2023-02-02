@@ -1,0 +1,80 @@
+{
+	"name": "coffee-database",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prettier:all": "prettier --write .",
+		"prettier:checkall": "prettier --check .",
+		"eslint:all": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.html",
+		"eslint:passfile": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.html"
+	},
+	"devDependencies": {
+		"@types/node": "^17.0.29",
+		"@typescript-eslint/eslint-plugin": "^5.50.0",
+		"@typescript-eslint/parser": "^5.50.0",
+		"@vue/eslint-plugin": "^4.2.0",
+		"eslint": "^8.33.0",
+		"eslint-plugin-html": "^7.1.0",
+		"eslint-plugin-vue": "^9.9.0",
+		"husky": "^8.0.0",
+		"json-server": "^0.17.1",
+		"lint-staged": "^13.1.0",
+		"prettier": "2.8.3",
+		"typescript": "^4.9.4",
+		"vite": "~2.9.9",
+		"vue-eslint-parser": "^9.1.0"
+	},
+	"lint-staged": {
+		"*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts,html}": [
+			"prettier --write",
+			"eslint:passfile"
+		],
+		"*.{md,json}": [
+			"prettier --write"
+		]
+	},
+	"eslintConfig": {
+		"root": true,
+		"parser": "vue-eslint-parser",
+		"parserOptions": {
+			"parser": "@typescript-eslint/parser",
+			"sourceType": "module"
+		},
+		"plugins": [
+			"@typescript-eslint",
+			"@vue",
+			"html"
+		],
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/eslint-recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:vue/base"
+		],
+		"rules": {
+			"no-console": "warn",
+			"prefer-const": "off",
+			"no-var": "off",
+			"@typescript-eslint/ban-types": "off",
+			"@typescript-eslint/no-inferrable-types": "off",
+			"no-empty": "off",
+			"no-unsafe-optional-chaining": "warn",
+			"@typescript-eslint/no-unused-vars": "off",
+			"no-mixed-spaces-and-tabs": "off"
+		}
+	},
+	"prettier": {
+		"trailingComma": "es5",
+		"tabWidth": 4,
+		"useTabs": true,
+		"semi": false
+	},
+	"engines": {
+		"node": ">=14",
+		"pnpm": ">=7"
+	},
+	"keywords": [],
+	"author": "skordion@hotmail.com",
+	"license": "ISC"
+}
