@@ -16,7 +16,7 @@ class Actor(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'actor'
+        db_table = "actor"
 
 
 class Address(models.Model):
@@ -24,7 +24,7 @@ class Address(models.Model):
     address = models.CharField(max_length=50)
     address2 = models.CharField(max_length=50, blank=True, null=True)
     district = models.CharField(max_length=20)
-    city = models.ForeignKey('City', models.DO_NOTHING)
+    city = models.ForeignKey("City", models.DO_NOTHING)
     postal_code = models.CharField(max_length=10, blank=True, null=True)
     phone = models.CharField(max_length=20)
     location = models.TextField()  # This field type is a guess.
@@ -32,10 +32,19 @@ class Address(models.Model):
 
     # type: ignore
     def __str__(self):
-        return "" + str(self.address) + " " + str(self.city) + str(self.postal_code) + " " + str(self.phone)
+        return (
+            ""
+            + str(self.address)
+            + " "
+            + str(self.city)
+            + str(self.postal_code)
+            + " "
+            + str(self.phone)
+        )
+
     class Meta:
         managed = False
-        db_table = 'address'
+        db_table = "address"
 
 
 class AuthGroup(models.Model):
@@ -43,29 +52,29 @@ class AuthGroup(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'auth_group'
+        db_table = "auth_group"
 
 
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+    permission = models.ForeignKey("AuthPermission", models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
+        db_table = "auth_group_permissions"
+        unique_together = (("group", "permission"),)
 
 
 class AuthPermission(models.Model):
     name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    content_type = models.ForeignKey("DjangoContentType", models.DO_NOTHING)
     codename = models.CharField(max_length=100)
 
     class Meta:
         managed = False
-        db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
+        db_table = "auth_permission"
+        unique_together = (("content_type", "codename"),)
 
 
 class AuthUser(models.Model):
@@ -82,7 +91,7 @@ class AuthUser(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'auth_user'
+        db_table = "auth_user"
 
 
 class AuthUserGroups(models.Model):
@@ -92,8 +101,8 @@ class AuthUserGroups(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
+        db_table = "auth_user_groups"
+        unique_together = (("user", "group"),)
 
 
 class AuthUserUserPermissions(models.Model):
@@ -103,8 +112,8 @@ class AuthUserUserPermissions(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
+        db_table = "auth_user_user_permissions"
+        unique_together = (("user", "permission"),)
 
 
 class Category(models.Model):
@@ -114,13 +123,13 @@ class Category(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'category'
+        db_table = "category"
 
 
 class City(models.Model):
     city_id = models.SmallAutoField(primary_key=True)
     city = models.CharField(max_length=50)
-    country = models.ForeignKey('Country', models.DO_NOTHING)
+    country = models.ForeignKey("Country", models.DO_NOTHING)
     last_update = models.DateTimeField()
 
     def __str__(self):
@@ -128,7 +137,7 @@ class City(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'city'
+        db_table = "city"
 
 
 class Country(models.Model):
@@ -138,12 +147,12 @@ class Country(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'country'
+        db_table = "country"
 
 
 class Customer(models.Model):
     customer_id = models.SmallAutoField(primary_key=True)
-    store = models.ForeignKey('Store', models.DO_NOTHING)
+    store = models.ForeignKey("Store", models.DO_NOTHING)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     email = models.CharField(max_length=50, blank=True, null=True)
@@ -154,7 +163,7 @@ class Customer(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'customer'
+        db_table = "customer"
 
 
 class DjangoAdminLog(models.Model):
@@ -163,12 +172,14 @@ class DjangoAdminLog(models.Model):
     object_repr = models.CharField(max_length=200)
     action_flag = models.PositiveSmallIntegerField()
     change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    content_type = models.ForeignKey(
+        "DjangoContentType", models.DO_NOTHING, blank=True, null=True
+    )
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'django_admin_log'
+        db_table = "django_admin_log"
 
 
 class DjangoContentType(models.Model):
@@ -177,8 +188,8 @@ class DjangoContentType(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
+        db_table = "django_content_type"
+        unique_together = (("app_label", "model"),)
 
 
 class DjangoMigrations(models.Model):
@@ -189,7 +200,7 @@ class DjangoMigrations(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'django_migrations'
+        db_table = "django_migrations"
 
 
 class DjangoSession(models.Model):
@@ -199,16 +210,26 @@ class DjangoSession(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'django_session'
+        db_table = "django_session"
 
 
 class Film(models.Model):
     film_id = models.SmallAutoField(primary_key=True)
     title = models.CharField(max_length=128)
     description = models.TextField(blank=True, null=True)
-    release_year = models.TextField(blank=True, null=True)  # This field type is a guess.
-    language = models.ForeignKey('Language', models.DO_NOTHING, related_name='film_language')
-    original_language = models.ForeignKey('Language', models.DO_NOTHING, blank=True, null=True, related_name='film_original_language')
+    release_year = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    language = models.ForeignKey(
+        "Language", models.DO_NOTHING, related_name="film_language"
+    )
+    original_language = models.ForeignKey(
+        "Language",
+        models.DO_NOTHING,
+        blank=True,
+        null=True,
+        related_name="film_original_language",
+    )
     rental_duration = models.PositiveIntegerField()
     rental_rate = models.DecimalField(max_digits=4, decimal_places=2)
     length = models.PositiveSmallIntegerField(blank=True, null=True)
@@ -219,7 +240,7 @@ class Film(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'film'
+        db_table = "film"
 
 
 class FilmActor(models.Model):
@@ -229,8 +250,8 @@ class FilmActor(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'film_actor'
-        unique_together = (('actor', 'film'),)
+        db_table = "film_actor"
+        unique_together = (("actor", "film"),)
 
 
 class FilmCategory(models.Model):
@@ -240,8 +261,8 @@ class FilmCategory(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'film_category'
-        unique_together = (('film', 'category'),)
+        db_table = "film_category"
+        unique_together = (("film", "category"),)
 
 
 class FilmText(models.Model):
@@ -251,18 +272,18 @@ class FilmText(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'film_text'
+        db_table = "film_text"
 
 
 class Inventory(models.Model):
     inventory_id = models.AutoField(primary_key=True)
     film = models.ForeignKey(Film, models.DO_NOTHING)
-    store = models.ForeignKey('Store', models.DO_NOTHING)
+    store = models.ForeignKey("Store", models.DO_NOTHING)
     last_update = models.DateTimeField()
 
     class Meta:
         managed = False
-        db_table = 'inventory'
+        db_table = "inventory"
 
 
 class Language(models.Model):
@@ -272,21 +293,21 @@ class Language(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'language'
+        db_table = "language"
 
 
 class Payment(models.Model):
     payment_id = models.SmallAutoField(primary_key=True)
     customer = models.ForeignKey(Customer, models.DO_NOTHING)
-    staff = models.ForeignKey('Staff', models.DO_NOTHING)
-    rental = models.ForeignKey('Rental', models.DO_NOTHING, blank=True, null=True)
+    staff = models.ForeignKey("Staff", models.DO_NOTHING)
+    rental = models.ForeignKey("Rental", models.DO_NOTHING, blank=True, null=True)
     amount = models.DecimalField(max_digits=5, decimal_places=2)
     payment_date = models.DateTimeField()
     last_update = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'payment'
+        db_table = "payment"
 
 
 class Rental(models.Model):
@@ -295,13 +316,13 @@ class Rental(models.Model):
     inventory = models.ForeignKey(Inventory, models.DO_NOTHING)
     customer = models.ForeignKey(Customer, models.DO_NOTHING)
     return_date = models.DateTimeField(blank=True, null=True)
-    staff = models.ForeignKey('Staff', models.DO_NOTHING)
+    staff = models.ForeignKey("Staff", models.DO_NOTHING)
     last_update = models.DateTimeField()
 
     class Meta:
         managed = False
-        db_table = 'rental'
-        unique_together = (('rental_date', 'inventory', 'customer'),)
+        db_table = "rental"
+        unique_together = (("rental_date", "inventory", "customer"),)
 
 
 class Staff(models.Model):
@@ -311,28 +332,39 @@ class Staff(models.Model):
     address = models.ForeignKey(Address, models.DO_NOTHING)
     picture = models.TextField(blank=True, null=True)
     email = models.CharField(max_length=50, blank=True, null=True)
-    store = models.ForeignKey('Store', models.DO_NOTHING)
+    store = models.ForeignKey("Store", models.DO_NOTHING)
     active = models.IntegerField()
     username = models.CharField(max_length=16)
-    password = models.CharField(max_length=40, db_collation='utf8mb4_bin', blank=True, null=True)
+    password = models.CharField(
+        max_length=40, db_collation="utf8mb4_bin", blank=True, null=True
+    )
     last_update = models.DateTimeField()
 
     def __str__(self):
-        return str(self.first_name) + str(self.last_name) + ", who works at " + str(self.store)
+        return (
+            str(self.first_name)
+            + str(self.last_name)
+            + ", who works at "
+            + str(self.store)
+        )
+
     class Meta:
         managed = False
-        db_table = 'staff'
+        db_table = "staff"
 
 
 class Store(models.Model):
     store_id = models.AutoField(primary_key=True)
-    manager_staff = models.OneToOneField(Staff, models.DO_NOTHING, related_name='store_manager_staff')
+    manager_staff = models.OneToOneField(
+        Staff, models.DO_NOTHING, related_name="store_manager_staff"
+    )
     address = models.ForeignKey(Address, models.DO_NOTHING)
     last_update = models.DateTimeField()
 
     # type: ignore
     def __str__(self):
         return str(self.address)
+
     class Meta:
         managed = False
-        db_table = 'store'
+        db_table = "store"

@@ -1,8 +1,19 @@
 from django.contrib import admin
 
-from .models import Actor, Address, Category, City, Country, \
-                    Customer, Film, FilmActor, FilmCategory, Inventory, \
-                    Staff, Store
+from .models import (
+    Actor,
+    Address,
+    Category,
+    City,
+    Country,
+    Customer,
+    Film,
+    FilmActor,
+    FilmCategory,
+    Inventory,
+    Staff,
+    Store,
+)
 
 admin.site.register(Actor)
 admin.site.register(Address)
