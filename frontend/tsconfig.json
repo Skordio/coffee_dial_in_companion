@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "es6",
 		"module": "esnext",
 		"strict": true,
 		"jsx": "preserve",
@@ -9,29 +9,23 @@
 		"esModuleInterop": true,
 		"sourceMap": true,
 		"baseUrl": ".",
+		"composite": true,
 		"types": ["node"],
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["./src/*"]
 		},
-		"lib": ["es2015", "dom", "dom.iterable", "scripthost"]
+		"lib": ["es2015", "DOM", "dom.iterable", "scripthost"]
 	},
 	"include": [
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		"src/**/*.vue",
 		"tests/**/*.ts",
-		"tests/**/*.tsx"
+		"tests/**/*.tsx",
+		"env.d.ts",
+		"src/**/*",
+		"src/**/*.vue"
 	],
-	"exclude": ["node_modules"],
-	"references": [
-		{
-			"path": "./tsconfig.config.json"
-		},
-		{
-			"path": "./tsconfig.app.json"
-		},
-		{
-			"path": "./tsconfig.vitest.json"
-		}
-	]
+	"exclude": ["node_modules", "src/**/__tests__/*"],
+	"extends": "@vue/tsconfig/tsconfig.web.json"
 }

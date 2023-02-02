@@ -6,8 +6,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"prettier:all": "prettier --write .",
 		"prettier:checkall": "prettier --check .",
-		"eslint:all": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.html",
-		"eslint:passfile": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.html"
+		"eslint:all": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.html"
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.29",
@@ -28,7 +27,7 @@
 	"lint-staged": {
 		"*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts,html}": [
 			"prettier --write",
-			"eslint:passfile"
+			"eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.html"
 		],
 		"*.{md,json}": [
 			"prettier --write"
