@@ -5,6 +5,4 @@ build-backend = "setuptools.build_meta"
 line-length = 130
 include = '\.pyi?$'
 
-#need to use force-exclude here because passing a file to black (which lint-staged does)
-#will override normal excludes, but not force-exclude
 force-exclude = '.*models.py|.*models/.*.py|.*models_legacy.py'
