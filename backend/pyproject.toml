@@ -1,0 +1,8 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+[tool.black]
+line-length = 130
+include = '\.pyi?$'
+
+force-exclude = '.*models.py|.*models/.*.py|.*models_legacy.py'
