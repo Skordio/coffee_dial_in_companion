@@ -1,32 +1,8 @@
 <template>
-	<!-- <header>
-		<img
-			alt="Vue logo"
-			class="logo"
-			src="@/assets/logo.svg"
-			width="125"
-			height="125"
-		/>
-
-		<div class="wrapper">
-		<HelloWorld msg="You did it!" />
-
-		<nav>
-			<RouterLink to="/">Home</RouterLink>
-			<RouterLink to="/about">About</RouterLink>
-		</nav>
-		</div>
-	</header>
-
-	<RouterView /> -->
-
 	<div class="flex-container-vert">
-		<div>
-			<p v-if="isAuthenticated" style="font-size: xx-large">
-				YOU ARE LOGGED IN NICE
-			</p>
+		<div v-if="isAuthenticated">
+			<p style="font-size: xx-large">YOU ARE LOGGED IN NICE</p>
 		</div>
-		<div style="height: 10em"></div>
 		<div class="flex-container">
 			<button
 				class="big-button-style"
@@ -36,13 +12,6 @@
 				Log In
 			</button>
 
-			<!-- <button
-				class="btn btn-primary btn-margin"
-				
-				@click="privateMessage()">
-				Call Private
-			</button> -->
-			<!-- class="btn btn-primary btn-margin" -->
 			<button
 				class="big-button-style"
 				v-if="isAuthenticated"
@@ -78,11 +47,11 @@ export default defineComponent({
 		// let handleAuthentication = () => 	{auth.handleAuthentication()}
 		// let logout = () => 					{auth.logout()}
 
-		let login = () => {
+		const login = () => {
 			auth0.loginWithRedirect()
 		}
 
-		let logout = () => {
+		const logout = () => {
 			auth0.logout({
 				logoutParams: {
 					returnTo: window.location.origin,

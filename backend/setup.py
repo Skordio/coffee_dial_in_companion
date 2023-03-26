@@ -12,5 +12,7 @@ setup(
         "black",
         "djangorestframework-simplejwt",
         "cryptography",
+        "mysqlclient==2.1.1",
+        "django-cors-headers==3.14.0",
     ],
 )
