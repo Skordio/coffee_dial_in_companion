@@ -7,8 +7,11 @@ myproject.egg-info/requires.txt
 myproject.egg-info/top_level.txt
 mysite/__init__.py
 mysite/asgi.py
+mysite/models copy.py
 mysite/models.py
+mysite/serializers.py
 mysite/settings.py
+mysite/thing.py
 mysite/urls.py
 mysite/views.py
 mysite/viewsets.py
