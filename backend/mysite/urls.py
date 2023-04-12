@@ -21,6 +21,15 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from . import views
+from mysite import getRouter
+from .viewsets import CofPullViewSet
+
+router = getRouter()
+
+router.register(r'cofpull', CofPullViewSet)
+api_patterns = [
+    path('api/', include(router.urls)),
+]
 
 urlpatterns = [
     path("polls/", include("polls.urls")),
