@@ -24,6 +24,7 @@ from . import views
 
 urlpatterns = [
     path("polls/", include("polls.urls")),
+    path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     path("admin/", admin.site.urls),
     path("", views.public),
     path("api/public", views.public),
