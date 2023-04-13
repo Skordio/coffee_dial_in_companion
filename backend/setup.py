@@ -7,6 +7,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         "Django==4.1.5",
+        'djangorestframework',
+        'drf-nested-routers==0.93.4',
         "django-sql-utils",
         "pylint",
         "black",

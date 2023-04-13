@@ -22,6 +22,16 @@
 			{{ message }}
 			<br />
 		</div>
+		<div class="flex-container">
+			<button
+				class="big-button-style"
+				v-if="isAuthenticated"
+				@click="getListCofPull()"
+			>
+				Get Coffee Pulls
+			</button>
+			<br />
+		</div>
 	</div>
 </template>
 
@@ -32,6 +42,7 @@ import { ref, defineComponent } from "vue"
 // import AuthService from './auth/AuthService'
 import axios from "axios"
 import { useAuth0 } from "@auth0/auth0-vue"
+import cofpullapi from "./api/cofpull"
 
 // const API_URL = 'http://localhost:8000'
 // const auth = new AuthService()
@@ -58,6 +69,17 @@ export default defineComponent({
 				},
 			})
 		}
+
+		const getListCofPull = () => {
+			cofpullapi
+				.list()
+				.then((response: any) => {
+					console.log(response.data)
+				})
+				.catch((e: any) => {
+					console.log(e)
+				})
+		}
 		// let privateMessage = () => {
 		// 	const url = `${API_URL}/api/private/`
 		// 	return axios.get(url, {headers: {Authorization: `Bearer ${auth.getAuthToken()}`}}).then((response) => {
@@ -77,6 +99,7 @@ export default defineComponent({
 			message,
 			login,
 			logout,
+			getListCofPull
 		}
 	},
 })
