@@ -26,9 +26,9 @@ from .viewsets import CofPullViewSet
 
 router = getRouter()
 
-router.register(r'cofpull', CofPullViewSet)
+router.register(r"cofpull", CofPullViewSet, basename="cofpull")
 api_patterns = [
-    path('api/', include(router.urls)),
+    path("api/", include(router.urls)),
 ]
 
 urlpatterns = [
