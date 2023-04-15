@@ -1,36 +1,28 @@
 <template>
 	<div class="flex-container-vert">
-		<div v-if="isAuthenticated">
-			<p style="font-size: xx-large">YOU ARE LOGGED IN NICE</p>
-		</div>
-		<div class="flex-container">
-			<button
-				class="big-button-style"
-				v-if="!isAuthenticated"
-				@click="login()"
-			>
-				Log In
-			</button>
-
-			<button
-				class="big-button-style"
-				v-if="isAuthenticated"
-				@click="logout()"
-			>
-				Log Out
-			</button>
-			{{ message }}
-			<br />
-		</div>
-		<div class="flex-container">
-			<button
-				class="big-button-style"
-				v-if="isAuthenticated"
-				@click="getListCofPull()"
-			>
-				Get Coffee Pulls
-			</button>
-			<br />
+		<div>
+			<b-row v-if="isAuthenticated">
+				<b-col cols="12">
+					<p style="font-size: xx-large">YOU ARE LOGGED IN NICE</p>
+				</b-col>
+				<b-col>
+					<button
+						class="big-button-style"
+						v-if="isAuthenticated"
+						@click="getListCofPull()"
+					>
+						Get Coffee Pulls
+					</button>
+				</b-col>
+				<b-col>
+					{{ message }}
+				</b-col>
+			</b-row>
+			<b-row v-else>
+				<b-col>
+					<p style="font-size: xx-large">YOU ARE NOT LOGGED IN</p>
+				</b-col>
+			</b-row>
 		</div>
 	</div>
 </template>
@@ -45,14 +37,16 @@ export default defineComponent({
 	props: {},
 	setup(props) {
 		const auth0 = useAuth0()
-		const message = ref("")
+		const message = ref("No data")
 
 		// let login = () => 					{auth.login()}
 		// let handleAuthentication = () => 	{auth.handleAuthentication()}
 		// let logout = () => 					{auth.logout()}
 
 		const login = () => {
-			auth0.loginWithRedirect()
+			auth0.loginWithRedirect().then((data: any) => {
+				console.log(data)
+			})
 		}
 
 		const logout = () => {
@@ -64,14 +58,9 @@ export default defineComponent({
 		}
 
 		const getListCofPull = () => {
-			cofpullapi
-				.list()
-				.then((response: any) => {
-					console.log(response)
-				})
-				.catch((e: any) => {
-					console.log(e)
-				})
+			cofpullapi.list().then((response: any) => {
+				message.value = response
+			})
 		}
 		// let privateMessage = () => {
 		// 	const url = `${API_URL}/api/private/`
