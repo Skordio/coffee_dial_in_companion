@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseAPI = "/api/"
+const baseAPI = "http://localhost:8000/api/"
 const methods = ["get", "post", "delete", "put", "patch"]
 
 function API(this: any, relativeURL = "") {

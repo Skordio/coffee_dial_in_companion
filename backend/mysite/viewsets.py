@@ -23,11 +23,13 @@ from .models import CofPull, Cof, CofComment
 
 
 class CofPullViewSet(viewsets.ModelViewSet):
+    permission_classes = []
+
     def list(self, request):
-        Response("List", status=status.HTTP_200_OK)
+        return Response("List", status=status.HTTP_200_OK)
 
     def create(self, request):
-        Response("Create", status=status.HTTP_200_OK)
+        return Response("Create", status=status.HTTP_200_OK)
 
     def get_queryset(self):
         return CofPull.objects.all()
