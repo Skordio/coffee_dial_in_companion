@@ -40,8 +40,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "mysite",
-    "polls.apps.PollsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,6 +49,8 @@ INSTALLED_APPS = [
     "oauth2_provider",
     "rest_framework",
     "corsheaders",
+    "users",
+    "mysite",
 ]
 
 MIDDLEWARE = [
@@ -100,6 +100,7 @@ DATABASES = {
     }
 }
 
+LOGIN_URL = "/admin/login/"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -151,6 +152,7 @@ REST_FRAMEWORK = {
     ),
 }
 
+AUTH_USER_MODEL = "users.User"
 AUTH0_DOMAIN = "dev-0rhw0i4lr3uasosb.us.auth0.com"
 API_IDENTIFIER = "https://my.django-vue-test-api"
 PUBLIC_KEY = None

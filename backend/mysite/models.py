@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User
 # COFFEE MODELS
 
 class Cof(models.Model):
@@ -7,7 +7,7 @@ class Cof(models.Model):
     date_roasted = models.DateField(blank=True, null=True)  # Field name made lowercase.
     date_best_by = models.DateField(blank=True, null=True)  # Field name made lowercase.
     name = models.CharField( max_length=100) # Field name made lowercase.
-    user = models.ForeignKey(User, models.DO_NOTHING, db_column='COF_User')  # Field name made lowercase.
+    user = models.ForeignKey(User, models.DO_NOTHING)  # Field name made lowercase.
 
     class Meta:
         managed = True

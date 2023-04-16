@@ -1,8 +1,20 @@
 <template>
-	<b-navbar class="navbar_styling" variant="info" fixed="top">
+	<b-navbar class="navbar_styling" variant="light" fixed="top">
 		<b-navbar-nav>
-			<b-nav-item href="/">Home</b-nav-item>
-			<b-nav-item href="/about">About</b-nav-item>
+			<b-nav-item
+				><router-link
+					style="text-decoration: none"
+					:to="{ name: 'home' }"
+					>Home</router-link
+				></b-nav-item
+			>
+			<b-nav-item
+				><router-link
+					style="text-decoration: none"
+					:to="{ name: 'about' }"
+					>About</router-link
+				></b-nav-item
+			>
 		</b-navbar-nav>
 
 		<b-nav-item-dropdown right>
@@ -11,15 +23,11 @@
 				<em>User</em>
 			</template>
 			<template v-if="isAuthenticated">
-				<b-dropdown-item href="#">Profile</b-dropdown-item>
-				<b-dropdown-item @click="logout()" href="#"
-					>Sign Out</b-dropdown-item
-				>
+				<b-dropdown-item>Profile</b-dropdown-item>
+				<b-dropdown-item @click="logout()">Sign Out</b-dropdown-item>
 			</template>
 			<template v-if="!isAuthenticated">
-				<b-dropdown-item @click="login()" href="#"
-					>Sign In</b-dropdown-item
-				>
+				<b-dropdown-item @click="login()">Sign In</b-dropdown-item>
 			</template>
 		</b-nav-item-dropdown>
 	</b-navbar>
@@ -80,7 +88,7 @@ export default defineComponent({
 @import "./assets/homestyle.css";
 
 .navbar_styling {
-	height: 40px;
+	/* height: 40px; */
 	margin-left: 0;
 	margin-top: 0px;
 }

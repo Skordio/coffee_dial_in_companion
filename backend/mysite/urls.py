@@ -32,7 +32,6 @@ api_patterns = [
 ]
 
 urlpatterns = [
-    path("polls/", include("polls.urls")),
     path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     path("admin/", admin.site.urls),
     path("api/public/", views.public),

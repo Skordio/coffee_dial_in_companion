@@ -39,48 +39,16 @@ export default defineComponent({
 		const auth0 = useAuth0()
 		const message = ref("No data")
 
-		// let login = () => 					{auth.login()}
-		// let handleAuthentication = () => 	{auth.handleAuthentication()}
-		// let logout = () => 					{auth.logout()}
-
-		const login = () => {
-			auth0.loginWithRedirect().then((data: any) => {
-				console.log(data)
-			})
-		}
-
-		const logout = () => {
-			auth0.logout({
-				logoutParams: {
-					returnTo: window.location.origin,
-				},
-			})
-		}
-
 		const getListCofPull = () => {
 			cofpullapi.list().then((response: any) => {
 				message.value = response
 			})
 		}
-		// let privateMessage = () => {
-		// 	const url = `${API_URL}/api/private/`
-		// 	return axios.get(url, {headers: {Authorization: `Bearer ${auth.getAuthToken()}`}}).then((response) => {
-		// 		console.log(response.data)
-		// 		message.valueOf = response.data || ''
-		// 	})
-		// }
-
-		// auth.authNotifier.on('authChange', authState => {
-		// 	authenticated.value = authState.authenticated
-		// })
-
 		return {
 			user: auth0.user,
 			isAuthenticated: auth0.isAuthenticated,
 			isLoading: auth0.isLoading,
 			message,
-			login,
-			logout,
 			getListCofPull,
 		}
 	},
