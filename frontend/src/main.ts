@@ -1,4 +1,4 @@
-import { createApp, h } from "vue"
+import { createApp } from "vue"
 import App from "./App.vue"
 import BootstrapVueNext from "bootstrap-vue-next"
 import { createAuth0 } from "@auth0/auth0-vue"

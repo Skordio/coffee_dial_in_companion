@@ -41,3 +41,5 @@ pyvenv.cfg
 /backend/polls/__pycache__/
 /database stuff/
 backend/polls/migrations/__pycache__
+
+ai
