@@ -40,6 +40,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "users",
+    "mysite",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -49,8 +51,7 @@ INSTALLED_APPS = [
     "oauth2_provider",
     "rest_framework",
     "corsheaders",
-    "users",
-    "mysite",
+    "social_django",
 ]
 
 MIDDLEWARE = [
@@ -161,4 +162,28 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:5173",
     #'localhost:8000',
     #'localhost:5173',
+)
+
+AUTHENTICATION_BACKENDS = (
+    "social_core.backends.google.GoogleOAuth2",
+    "social_core.backends.github.GithubOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+)
+
+SOCIAL_AUTH_URL_NAMESPACE = "social"
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "NhHd68XyPUcvORzEGsAWCVXwDEjOtkRf"
+SOCIAL_AUTH_GITHUB_KEY = "NhHd68XyPUcvORzEGsAWCVXwDEjOtkRf"
+from mysite.secrets import SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET, SOCIAL_AUTH_GITHUB_SECRET
+
+SOCIAL_AUTH_PIPELINE = (
+    "social_core.pipeline.social_auth.social_details",
+    "social_core.pipeline.social_auth.social_uid",
+    "social_core.pipeline.social_auth.auth_allowed",
+    "social_core.pipeline.social_auth.social_user",
+    "users.pipeline.create_user",
+    "social_core.pipeline.social_auth.associate_by_email",
+    "social_core.pipeline.user.create_user",
+    "social_core.pipeline.social_auth.associate_user",
+    "social_core.pipeline.social_auth.load_extra_data",
+    "social_core.pipeline.user.user_details",
 )

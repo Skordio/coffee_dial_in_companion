@@ -43,3 +43,4 @@ pyvenv.cfg
 backend/polls/migrations/__pycache__
 
 ai
+secrets.py

@@ -33,6 +33,6 @@ api_patterns = [
 ]
 
 urlpatterns = [
-    path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
+    path("social-auth/", include("social_django.urls", namespace="social")),
     path("admin/", admin.site.urls),
 ] + api_patterns
