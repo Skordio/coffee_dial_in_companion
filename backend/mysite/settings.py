@@ -100,7 +100,15 @@ DATABASES = {
         "PASSWORD": MYSQL_DATABASE_SECRET,
         "HOST": "192.168.1.37",
         "PORT": "3306",
-    }
+    },
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "coffee",
+    #     "USER": "skord",
+    #     "PASSWORD": MYSQL_DATABASE_SECRET,
+    #     "HOST": "localhost",
+    #     "PORT": "3306",
+    # }
 }
 
 LOGIN_URL = "/admin/login/"
