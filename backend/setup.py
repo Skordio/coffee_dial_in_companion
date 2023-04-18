@@ -19,5 +19,6 @@ setup(
         "django-oauth-toolkit==2.2.0",
         "social-auth-app-django==5.0.0",
         "social-auth-core==4.1.0",
+        "mysqlclient==2.1.1",
     ],
 )
