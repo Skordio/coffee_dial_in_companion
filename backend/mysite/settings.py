@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import json
 from pathlib import Path
 from django.utils import timezone
+from datetime import datetime, timedelta
 import urllib.request
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
@@ -48,9 +49,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "oauth2_provider",
-    "rest_framework",
     "corsheaders",
+    "rest_framework",
+    "oauth2_provider",
     "social_django",
 ]
 
@@ -147,24 +148,27 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.BasicAuthentication",
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 
 AUTH_USER_MODEL = "users.User"
 AUTH0_DOMAIN = "dev-0rhw0i4lr3uasosb.us.auth0.com"
 API_IDENTIFIER = "https://my.django-vue-test-api"
 
-CORS_ORIGIN_WHITELIST = (
-    "http://localhost:8000",
-    "http://localhost:5173",
-    #'localhost:8000',
-    #'localhost:5173',
-)
+# JWT settings
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
+
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 AUTHENTICATION_BACKENDS = (
     "social_core.backends.google.GoogleOAuth2",

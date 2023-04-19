@@ -23,11 +23,13 @@ from rest_framework_simplejwt.views import (
 from . import views
 from mysite import getRouter
 from .viewsets import CofPullViewSet, CoffeeViewSet
+from users.viewsets import UserViewSet
 
 router = getRouter()
 
 router.register(r"cofpull", CofPullViewSet, basename="cofpull")
 router.register(r"coffee", CoffeeViewSet, basename="coffee")
+router.register(r"user", UserViewSet, basename="user")
 api_patterns = [
     path("api/", include(router.urls)),
 ]

@@ -15,7 +15,7 @@ function API(this: any, relativeURL = "") {
 	})
 }
 
-Audio.prototype.prefetchHeader = function (AuthService: any) {
+API.prototype.prefetchHeader = function (AuthService: any) {
 	return AuthService.ResourceLogin()
 }
 

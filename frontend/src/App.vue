@@ -44,8 +44,7 @@
 </template>
 
 <script lang="ts">
-import HelloWorld from "./components/HelloWorld.vue"
-import { ref, defineComponent } from "vue"
+import { defineComponent } from "vue"
 import { useAuth0 } from "@auth0/auth0-vue"
 import { useRouter } from "vue-router"
 
