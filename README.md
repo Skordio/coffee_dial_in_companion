@@ -1,4 +1,4 @@
-# Coffee Dial-in Companion
+# Espresso Dial-in Companion
 
 Coffee Dial-in Companion is a web app designed for coffee enthusiasts, particularly espresso lovers, to easily log and track their coffee-making process. The primary goal is to help users dial in their beans and consistently brew exceptional coffee. While the app is primarily targeted at espresso users, it also accommodates other brewing methods such as moka pots and K-cups.
 
