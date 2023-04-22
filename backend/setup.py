@@ -14,7 +14,7 @@ setup(
         "black",
         "djangorestframework-simplejwt",
         "cryptography",
-        "mysqlclient==2.1.1",
+        "mysqlclient",
         "django-cors-headers==3.14.0",
         "django-oauth-toolkit==2.2.0",
         "social-auth-app-django==5.0.0",
