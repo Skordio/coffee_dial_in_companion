@@ -91,7 +91,7 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-from .secrets import MYSQL_DATABASE_SECRET
+from ..secrets import MYSQL_DATABASE_SECRET
 
 DATABASES = {
     "default": {
@@ -99,7 +99,7 @@ DATABASES = {
         "NAME": "coffee",
         "USER": "skord",
         "PASSWORD": MYSQL_DATABASE_SECRET,
-        "HOST": "192.168.1.37",
+        "HOST": "localhost",
         "PORT": "3306",
     },
 }
