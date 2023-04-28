@@ -1,26 +1,11 @@
 <template>
 	<div class="flex-container-vert">
 		<div>
-			<b-row v-if="isAuthenticated">
-				<b-col cols="12">
-					<p style="font-size: xx-large">YOU ARE LOGGED IN NICE</p>
-				</b-col>
+			<b-row>
 				<b-col>
-					<button
-						class="big-button-style"
-						v-if="isAuthenticated"
-						@click="getListCofPull()"
-					>
+					<button class="big-button-style" @click="getListCofPull()">
 						Get Coffee Pulls
 					</button>
-				</b-col>
-				<b-col>
-					{{ message }}
-				</b-col>
-			</b-row>
-			<b-row v-else>
-				<b-col>
-					<p style="font-size: xx-large">YOU ARE NOT LOGGED IN</p>
 				</b-col>
 			</b-row>
 		</div>
@@ -29,14 +14,12 @@
 
 <script lang="ts">
 import { ref, defineComponent } from "vue"
-import { useAuth0 } from "@auth0/auth0-vue"
 import cofpullapi from "@/api/cofpull"
 
 export default defineComponent({
 	components: {},
 	props: {},
 	setup(props) {
-		const auth0 = useAuth0()
 		const message = ref("No data")
 
 		const getListCofPull = () => {
@@ -45,9 +28,6 @@ export default defineComponent({
 			})
 		}
 		return {
-			user: auth0.user,
-			isAuthenticated: auth0.isAuthenticated,
-			isLoading: auth0.isLoading,
 			message,
 			getListCofPull,
 		}

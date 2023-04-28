@@ -9,7 +9,6 @@ mysite/__init__.py
 mysite/asgi.py
 mysite/models.py
 mysite/secrets.py
-mysite/settings.py
 mysite/urls.py
 mysite/views.py
 mysite/viewsets.py
