@@ -23,7 +23,7 @@ const vuetify = createVuetify({
 const app = createApp(App)
 const pinia = createPinia()
 
-app.use(BootstrapVueNext)
+// app.use(BootstrapVueNext)
 app.use(pinia)
 app.use(router)
 app.use(vuetify)
