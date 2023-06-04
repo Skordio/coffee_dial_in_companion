@@ -1,13 +1,21 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 import BootstrapVueNext from "bootstrap-vue-next"
-import { createRouter, createWebHistory } from "vue-router"
 import { createPinia } from "pinia"
-import router from "./router"
+import { createWebHashHistory, createRouter } from "vue-router"
+import type { RouterOptions } from "vue-router"
 
 import "./assets/main.css"
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap-vue-next/dist/bootstrap-vue-next.css"
+
+// Router
+const routes = (await import("./routes")).default as RouterOptions["routes"]
+const router = createRouter({
+	// 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+	history: createWebHashHistory(),
+	routes: routes,
+})
 
 // Vuetify
 import "vuetify/styles"

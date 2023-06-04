@@ -1,35 +1,15 @@
-<template>
-	<div class="flex-container-vert">
-		<div>
-			<b-row>
-				<b-col>
-					<button class="big-button-style" @click="getListCofPull()">
-						Get Coffee Pulls
-					</button>
-				</b-col>
-			</b-row>
-		</div>
-	</div>
-</template>
+<template></template>
 
 <script lang="ts">
 import { ref, defineComponent } from "vue"
-import cofpullapi from "@/api/cofpull"
 
 export default defineComponent({
 	components: {},
 	props: {},
 	setup(props) {
 		const message = ref("No data")
-
-		const getListCofPull = () => {
-			cofpullapi.list().then((response: any) => {
-				message.value = response
-			})
-		}
 		return {
 			message,
-			getListCofPull,
 		}
 	},
 })
