@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "oauth2_provider",
     "social_django",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -149,6 +150,7 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 AUTH_USER_MODEL = "users.User"
@@ -175,7 +177,6 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_URL_NAMESPACE = "social"
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "NhHd68XyPUcvORzEGsAWCVXwDEjOtkRf"
 SOCIAL_AUTH_GITHUB_KEY = "NhHd68XyPUcvORzEGsAWCVXwDEjOtkRf"
-from mysite.secrets import SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET, SOCIAL_AUTH_GITHUB_SECRET
 
 SOCIAL_AUTH_PIPELINE = (
     "social_core.pipeline.social_auth.social_details",

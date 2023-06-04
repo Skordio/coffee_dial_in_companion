@@ -18,29 +18,25 @@ from rest_framework.decorators import action
 from rest_framework.views import APIView
 from rest_framework import viewsets, filters
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 from .models import CofPull, Cof, CofComment
+from .serializers import CofPullSerializer, CofSerializer, CofCommentSerializer
 
 
 class CofPullViewSet(viewsets.ModelViewSet):
-    permission_classes = []
-
-    def list(self, request):
-        return Response("List", status=status.HTTP_200_OK)
-
-    def create(self, request):
-        return Response("Create", status=status.HTTP_200_OK)
-
-    def get_queryset(self):
-        return CofPull.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = CofPullSerializer
+    queryset = CofPull.objects.all()
 
 
 class CoffeeViewSet(viewsets.ModelViewSet):
-    def list(self, request):
-        Response("List", status=status.HTTP_200_OK)
+    permission_classes = [IsAuthenticated]
+    serializer_class = CofSerializer
+    queryset = Cof.objects.all()
 
-    def create(self, request):
-        Response("Create", status=status.HTTP_200_OK)
 
-    def get_queryset(self):
-        return CofPull.objects.all()
+class CofCommentViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CofCommentSerializer
+    queryset = CofComment.objects.all()

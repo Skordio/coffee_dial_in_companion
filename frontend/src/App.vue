@@ -1,31 +1,19 @@
 <template>
-	<v-card>
-		<v-layout>
-			<v-navigation-drawer expand-on-hover rail>
-				<v-list density="compact" nav>
-					<v-list-item
-						prepend-icon="mdi-folder"
-						title="My Files"
-						value="myfiles"
-					></v-list-item>
-					<v-list-item
-						prepend-icon="mdi-account-multiple"
-						title="Shared with me"
-						value="shared"
-					></v-list-item>
-					<v-list-item
-						prepend-icon="mdi-star"
-						title="Starred"
-						value="starred"
-					></v-list-item>
-				</v-list>
-			</v-navigation-drawer>
-
-			<v-main style="height: 250px">
-				<router-view></router-view>
-			</v-main>
-		</v-layout>
-	</v-card>
+	<v-app dark>
+		<v-navigation-drawer expand-on-hover rail>
+			<v-list density="compact" nav>
+				<v-list-item
+					:to="{ name: 'home' }"
+					prepend-icon="home-circle"
+					title="Home"
+					value="home"
+				></v-list-item>
+			</v-list>
+		</v-navigation-drawer>
+		<v-main>
+			<router-view />
+		</v-main>
+	</v-app>
 </template>
 
 <script setup lang="ts">

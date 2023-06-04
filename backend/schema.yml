@@ -1,0 +1,590 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /cofcomment/:
+    get:
+      operationId: cofcomment_list
+      tags:
+      - cofcomment
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CofComment'
+          description: ''
+    post:
+      operationId: cofcomment_create
+      tags:
+      - cofcomment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CofComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CofComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CofComment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofComment'
+          description: ''
+  /cofcomment/{cofcomment_id}/:
+    get:
+      operationId: cofcomment_retrieve
+      parameters:
+      - in: path
+        name: cofcomment_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof comment.
+        required: true
+      tags:
+      - cofcomment
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofComment'
+          description: ''
+    put:
+      operationId: cofcomment_update
+      parameters:
+      - in: path
+        name: cofcomment_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof comment.
+        required: true
+      tags:
+      - cofcomment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CofComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CofComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CofComment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofComment'
+          description: ''
+    patch:
+      operationId: cofcomment_partial_update
+      parameters:
+      - in: path
+        name: cofcomment_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof comment.
+        required: true
+      tags:
+      - cofcomment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCofComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCofComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCofComment'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofComment'
+          description: ''
+    delete:
+      operationId: cofcomment_destroy
+      parameters:
+      - in: path
+        name: cofcomment_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof comment.
+        required: true
+      tags:
+      - cofcomment
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /coffee/:
+    get:
+      operationId: coffee_list
+      tags:
+      - coffee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cof'
+          description: ''
+    post:
+      operationId: coffee_create
+      tags:
+      - coffee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cof'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cof'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cof'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cof'
+          description: ''
+  /coffee/{cof_id}/:
+    get:
+      operationId: coffee_retrieve
+      parameters:
+      - in: path
+        name: cof_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof.
+        required: true
+      tags:
+      - coffee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cof'
+          description: ''
+    put:
+      operationId: coffee_update
+      parameters:
+      - in: path
+        name: cof_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof.
+        required: true
+      tags:
+      - coffee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cof'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cof'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cof'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cof'
+          description: ''
+    patch:
+      operationId: coffee_partial_update
+      parameters:
+      - in: path
+        name: cof_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof.
+        required: true
+      tags:
+      - coffee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCof'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCof'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCof'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cof'
+          description: ''
+    delete:
+      operationId: coffee_destroy
+      parameters:
+      - in: path
+        name: cof_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof.
+        required: true
+      tags:
+      - coffee
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /cofpull/:
+    get:
+      operationId: cofpull_list
+      tags:
+      - cofpull
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CofPull'
+          description: ''
+    post:
+      operationId: cofpull_create
+      tags:
+      - cofpull
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CofPull'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CofPull'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CofPull'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofPull'
+          description: ''
+  /cofpull/{cofpull_id}/:
+    get:
+      operationId: cofpull_retrieve
+      parameters:
+      - in: path
+        name: cofpull_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof pull.
+        required: true
+      tags:
+      - cofpull
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofPull'
+          description: ''
+    put:
+      operationId: cofpull_update
+      parameters:
+      - in: path
+        name: cofpull_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof pull.
+        required: true
+      tags:
+      - cofpull
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CofPull'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CofPull'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CofPull'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofPull'
+          description: ''
+    patch:
+      operationId: cofpull_partial_update
+      parameters:
+      - in: path
+        name: cofpull_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof pull.
+        required: true
+      tags:
+      - cofpull
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCofPull'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCofPull'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCofPull'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CofPull'
+          description: ''
+    delete:
+      operationId: cofpull_destroy
+      parameters:
+      - in: path
+        name: cofpull_id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cof pull.
+        required: true
+      tags:
+      - cofpull
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Cof:
+      type: object
+      properties:
+        cof_id:
+          type: string
+          format: uuid
+        date_roasted:
+          type: string
+          format: date
+          nullable: true
+        date_best_by:
+          type: string
+          format: date
+          nullable: true
+        name:
+          type: string
+          maxLength: 100
+        user:
+          type: integer
+      required:
+      - cof_id
+      - name
+      - user
+    CofComment:
+      type: object
+      properties:
+        cofcomment_id:
+          type: string
+          format: uuid
+        comment_name:
+          type: string
+          maxLength: 100
+        comment:
+          type: string
+        comment_posted:
+          type: string
+          format: date-time
+        cof_id:
+          type: string
+          format: uuid
+        cofpull_id:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - cof_id
+      - cofcomment_id
+      - comment
+      - comment_posted
+    CofPull:
+      type: object
+      properties:
+        cofpull_id:
+          type: string
+          format: uuid
+        grams_in:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+        grams_out:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+        duration_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        cof_id:
+          type: string
+          format: uuid
+      required:
+      - cof_id
+      - cofpull_id
+    PatchedCof:
+      type: object
+      properties:
+        cof_id:
+          type: string
+          format: uuid
+        date_roasted:
+          type: string
+          format: date
+          nullable: true
+        date_best_by:
+          type: string
+          format: date
+          nullable: true
+        name:
+          type: string
+          maxLength: 100
+        user:
+          type: integer
+    PatchedCofComment:
+      type: object
+      properties:
+        cofcomment_id:
+          type: string
+          format: uuid
+        comment_name:
+          type: string
+          maxLength: 100
+        comment:
+          type: string
+        comment_posted:
+          type: string
+          format: date-time
+        cof_id:
+          type: string
+          format: uuid
+        cofpull_id:
+          type: string
+          format: uuid
+          nullable: true
+    PatchedCofPull:
+      type: object
+      properties:
+        cofpull_id:
+          type: string
+          format: uuid
+        grams_in:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+        grams_out:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+        duration_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        cof_id:
+          type: string
+          format: uuid
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    oauth2:
+      type: oauth2
+      flows: {}

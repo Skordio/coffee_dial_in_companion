@@ -22,19 +22,18 @@ from rest_framework_simplejwt.views import (
 )
 from . import views
 from mysite import getRouter
-from .viewsets import CofPullViewSet, CoffeeViewSet
+from .viewsets import CofPullViewSet, CoffeeViewSet, CofCommentViewSet
 from users.viewsets import UserViewSet
 
 router = getRouter()
 
 router.register(r"cofpull", CofPullViewSet, basename="cofpull")
+router.register(r"cofcomment", CofCommentViewSet, basename="cofcomment")
 router.register(r"coffee", CoffeeViewSet, basename="coffee")
 router.register(r"user", UserViewSet, basename="user")
-api_patterns = [
-    path("api/", include(router.urls)),
-]
 
 urlpatterns = [
+    path("/", include(router.urls)),
     path("social-auth/", include("social_django.urls", namespace="social")),
     path("admin/", admin.site.urls),
-] + api_patterns
+]
