@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"baseUrl": ".",
 		"composite": true,
-		"types": ["node"],
+		"types": ["node", "vuetify"],
 		"paths": {
 			"@/*": ["./src/*"]
 		},
