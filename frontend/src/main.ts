@@ -5,7 +5,7 @@ import { createWebHashHistory, createRouter } from "vue-router"
 import type { RouterOptions } from "vue-router"
 
 // Router
-const routes = (await import("./routes")).default as RouterOptions["routes"]
+const routes = (await import("./route")).default as RouterOptions["routes"]
 const router = createRouter({
 	// 4. Provide the history implementation to use. We are using the hash history for simplicity here.
 	history: createWebHashHistory(),

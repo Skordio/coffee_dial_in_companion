@@ -18,10 +18,10 @@
 			<v-navigation-drawer expand-on-hover rail v-model="showingDrawer">
 				<v-list density="compact" nav>
 					<v-list-item
-						:to="{ name: 'home' }"
-						prepend-icon="fa-solid fa-house"
-						title="Home"
-						value="home"
+						:to="{ name: ABOUT.PAGE }"
+						prepend-icon="fa-solid fa-a"
+						title="About"
+						value="about"
 					></v-list-item>
 				</v-list>
 			</v-navigation-drawer>
@@ -34,6 +34,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
+import { ABOUT } from "@/route/names"
 import { defineComponent } from "vue"
 import { useRouter } from "vue-router"
 
