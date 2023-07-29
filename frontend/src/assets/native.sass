@@ -1,0 +1,64 @@
+@import '../node_modules/bootstrap/scss/bootstrap'
+// @import '../node_modules/bootswatch/dist/darkly/variables'
+// @import '../node_modules/bootswatch/dist/darkly/bootswatch'
+  
+  
+html
+  overflow-y: hidden !important
+  height: 100%
+
+body
+  position: relative
+  margin: 0
+  overflow: hidden
+  display: flex column
+  align-items: stretch
+  font-family: 'Roboto', arial, sans-serif
+  min-height: 100%
+  height: 100%
+
+#app
+  padding:0
+  margin:0
+  max-width: 100vw !important
+  max-height: 100vh !important
+  display: flex !important
+
+#content
+  height: 100vh
+  overflow-y: hidden
+  overflow-x: hidden
+  padding: 0
+  margin: 0
+
+.vdp-datepicker
+  color: black
+
+@media print
+  .noprint
+    display: none !important
+  .print
+    display: block !important
+  .curtain
+    opacity: 1.0
+    color: white
+  .ext-print
+    overflow-y: visible
+    display: block
+    width: auto
+  .content-container
+    max-height: none
+    height: auto
+    overflow-y: visible
+    color: black
+  #static-content
+    max-height: none
+    display: block
+    overflow-y: visible
+  body
+    color: black !important
+    background-color: white !important
+  p
+    color: black
+  a
+    color: black
